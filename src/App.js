@@ -11,7 +11,7 @@ class App extends Component {
           <h1 className="App-title">Welcome to TravelDistance app test by Juan David Arce </h1>
         </header>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          This is a test for <code>MOZIO</code>.
         </p>
       </div>
     );
