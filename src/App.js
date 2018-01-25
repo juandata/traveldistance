@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {Head} from './Head';
 import {AutoComplete} from './AutoComplete';
 
 class App extends Component {
@@ -9,16 +10,19 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+      <Head />
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to TravelDistance app test by Juan David Arce </h1>
+          <h1 className="App-title">Welcome to <em>Driving TravelDistance app</em> test by <a href="http://juandavidarce.co/"target="_blank" >Juan David Arce </a></h1>
         </header>
         <p className="App-intro">
           This is a test for <code>MOZIO</code>.
         </p>
         < AutoComplete placeholder= "Write an origin" / >
         < AutoComplete placeholder= "Write a destination"/ >
-        <div id="demo"></div>
+        <h5 id="status"></h5>
+        <div id="distances"></div>
+
 
       </div>
     );
