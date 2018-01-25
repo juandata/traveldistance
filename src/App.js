@@ -19,7 +19,6 @@ class App extends Component {
         < AutoComplete placeholder= "Write an origin" / >
         < AutoComplete placeholder= "Write a destination"/ >
         <div id="demo"></div>
-          <div id="map"></div>
 
       </div>
     );
