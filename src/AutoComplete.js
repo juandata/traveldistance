@@ -62,8 +62,11 @@ export class AutoComplete extends React.Component {
               else {
                text = "You cannot drive from " + '<strong>' + answer.origin_addresses + '</strong> to  <strong>' + answer.destination_addresses + '</strong>';
               }
+            setTimeout(function(){
               document.getElementById("status").innerHTML = "";
-             document.getElementById('distances').innerHTML = text;
+              document.getElementById('distances').innerHTML = text;
+            }, 1000);  
+
 
 
             });
