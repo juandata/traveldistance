@@ -4,8 +4,13 @@
   "private": true,
   "homepage": "https://juandata.github.io/traveldistance/",
   "dependencies": {
+    "@google/maps": "^0.4.5",
+    "axios": "^0.17.1",
+    "google-distance-matrix": "^1.1.1",
+    "google-map-react": "^0.29.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-google-autocomplete": "^1.0.15",
     "react-helmet": "^5.2.0",
     "react-scripts": "1.1.0"
   },
