@@ -3,9 +3,16 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import {Head} from './Head';
 import {AutoComplete} from './AutoComplete';
+import {Cards} from './AutoComplete';
+import img0 from './img/car.png'
+import img1 from './img/hiker.png'
+import img2 from './img/bycicle.png'
+import img3 from './img/minibus.png'
+
 import './App.css';
 
 class App extends Component {
+
 
   render() {
     return (
@@ -18,11 +25,24 @@ class App extends Component {
         <p className="App-intro">
           This is a test for <code>MOZIO</code>.
         </p>
+        <h1>1- Select a travel mode</h1>
+        <div id="cards-container">
+        < Cards  name="driving" img={img0} />
+        < Cards  name="walking" img={img1}  />
+        < Cards  name="bicycling" img={img2}/>
+        < Cards  name="transit" img={img3}/>
+        </div>
+        <div>
+        <h1>2- Select origin and destination</h1>
         < AutoComplete placeholder= "Write an origin" / >
         < AutoComplete placeholder= "Write a destination"/ >
         <h5 id="status"></h5>
+        <div id="answer">
+        <h3 id="message-title"></h3>
         <div id="distances"></div>
         <div id="duration"></div>
+        </div>
+        </div>
 
 
       </div>

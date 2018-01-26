@@ -1,6 +1,43 @@
 import React from 'react';
 import Autocomplete from 'react-google-autocomplete';
-var places = [];
+import './banners.css';
+
+var places = []; let travelMode = "driving";
+
+
+export class Cards extends React.Component {
+  constructor(props) {
+   super(props);
+   //this.state = {isToggleOn: true};
+
+   // This binding is necessary to make `this` work in the callback
+   this.handleClick = this.handleClick.bind(this);
+ }
+
+  handleClick() {
+    travelMode = this.props.name;
+ }
+
+
+
+render() {
+  return (
+    <a  className="cards" onClick={this.handleClick} >
+    <div>
+      <div className="card">
+          <img src={this.props.img} alt={this.props.name} id="img" />
+          <div className="container">
+            <h4>I want to travel by <span id="mode"> {this.props.name}</span></h4>
+          </div>
+      </div>
+     </div>
+     </a>
+  )
+ }
+}
+
+
+
 export class AutoComplete extends React.Component {
 
 
@@ -8,7 +45,6 @@ export class AutoComplete extends React.Component {
   render() {
     return (
       <Autocomplete
-      style={{width: '90%'}}
       placeholder= {this.props.placeholder}
       onPlaceSelected={(place) => {
 
@@ -19,6 +55,7 @@ export class AutoComplete extends React.Component {
 
       if(places.length === 2) {
         document.getElementById("status").innerHTML = "Fletching Distance...";
+        document.getElementById("message-title").innerHTML = "";
         document.getElementById("distances").innerHTML = "";
         document.getElementById('duration').innerHTML = "";
 
@@ -43,7 +80,7 @@ export class AutoComplete extends React.Component {
 
         // Bind event
         (function() {
-          var urlField = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=place_id:' + places[0] + '&destinations=place_id:' + places[1]
+          var urlField = 'https://maps.googleapis.com/maps/api/distancematrix/json?' +'mode=' + travelMode + '&origins=place_id:' + places[0] + '&destinations=place_id:' + places[1]
           + '&language=en&key=AIzaSyDn8ctUY9eDqqGCpEFt_vI858za3n2RsXk';
 
 
@@ -52,25 +89,29 @@ export class AutoComplete extends React.Component {
               url: urlField,
             }, function getResult(result) {
               console.log(result);
-              let text = ""; let text0 = "";
+              let text = "", text0 = "", textMessage = "";
               var answer = JSON.parse(result);
               let zeroResults = answer.rows[0].elements[0].status;
               if(zeroResults === "OK"){
                 let distancia = answer.rows[0].elements[0].distance.text;
                 let duracion = answer.rows[0].elements[0].duration.text;
-                text = 'The driving distance from ' + '<strong>' + answer.origin_addresses + '</strong>'+ " to " + '<strong>' + answer.destination_addresses + '</strong>' + ' is ' +
+                 textMessage = "3- Check the answer : "
+                text = 'The ' + travelMode + ' distance from ' + '<strong>' + answer.origin_addresses + '</strong>'+ " to " + '<strong>' + answer.destination_addresses + '</strong>' + ' is ' +
                 distancia;
                 text0 = 'The duration of your travel will be ' + '<strong>' + duracion + '</strong>' + ' approximately.';
 
               }
               else {
-               text = "You cannot drive from " + '<strong>' + answer.origin_addresses + '</strong> to  <strong>' + answer.destination_addresses + '</strong>';
+              textMessage = "3- Imposible travel : "
+               text = "You cannot go by " + travelMode + " from " + '<strong>' + answer.origin_addresses + '</strong> to  <strong>' + answer.destination_addresses + '</strong>';
                text0 = "";
               }
             setTimeout(function(){
               document.getElementById("status").innerHTML = "";
+              document.getElementById('message-title').innerHTML = textMessage;
               document.getElementById('distances').innerHTML = text;
               document.getElementById('duration').innerHTML = text0;
+              console.log(travelMode);
 
             }, 1000);
 

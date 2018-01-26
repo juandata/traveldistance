@@ -23,6 +23,7 @@
 }
 
 input {
+        width: 400px;
         height: 30px;
         padding-left: 10px;
         border-radius: 4px;
@@ -30,14 +31,30 @@ input {
         box-shadow: 0px 0px 12px #EFEFEF;
       }
 
-
-
+#cards-container {
+  display: flex;
+  justify-content: center;
+}
+#answer {
+  width: 80%;
+  margin: auto;
+  border: solid;
+}
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+@media (max-width : 1000px) {
+    #cards-container  { font-size: x-small;}
 
+}
 @media (max-width : 600px) {
     .App-header { font-size: small;}
+    input {width: 80%;}
+}
+
+@media (max-width : 400px) {
+    #cards-container { flex-direction: column;
+    }
 }
