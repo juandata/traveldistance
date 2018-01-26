@@ -20,7 +20,7 @@ class App extends Component {
       <Head />
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to <em>Driving TravelDistance app</em> test by <a href="http://juandavidarce.co/"target="_blank" >Juan David Arce </a></h1>
+          <h1 className="App-title">Welcome to <em>TravelDistance app</em> test by <a href="http://juandavidarce.co/"target="_blank" >Juan David Arce </a></h1>
         </header>
         <p className="App-intro">
           This is a test for <code>MOZIO</code>.

@@ -39,6 +39,8 @@ input {
   width: 80%;
   margin: auto;
   border: solid;
+  background: black;
+  color: white;
 }
 
 @keyframes App-logo-spin {
