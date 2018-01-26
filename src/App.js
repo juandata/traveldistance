@@ -1,9 +1,9 @@
 
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';
 import {Head} from './Head';
 import {AutoComplete} from './AutoComplete';
+import './App.css';
 
 class App extends Component {
 
@@ -22,6 +22,7 @@ class App extends Component {
         < AutoComplete placeholder= "Write a destination"/ >
         <h5 id="status"></h5>
         <div id="distances"></div>
+        <div id="duration"></div>
 
 
       </div>

@@ -20,6 +20,8 @@ export class AutoComplete extends React.Component {
       if(places.length === 2) {
         document.getElementById("status").innerHTML = "Fletching Distance...";
         document.getElementById("distances").innerHTML = "";
+        document.getElementById('duration').innerHTML = "";
+
 
         var cors_api_url = 'https://cors-anywhere.herokuapp.com/';
         function doCORSRequest(options, getResult) {
@@ -50,22 +52,27 @@ export class AutoComplete extends React.Component {
               url: urlField,
             }, function getResult(result) {
               console.log(result);
-              let text = "";
+              let text = ""; let text0 = "";
               var answer = JSON.parse(result);
               let zeroResults = answer.rows[0].elements[0].status;
               if(zeroResults === "OK"){
                 let distancia = answer.rows[0].elements[0].distance.text;
+                let duracion = answer.rows[0].elements[0].duration.text;
                 text = 'The driving distance from ' + '<strong>' + answer.origin_addresses + '</strong>'+ " to " + '<strong>' + answer.destination_addresses + '</strong>' + ' is ' +
                 distancia;
+                text0 = 'The duration of your travel will be ' + '<strong>' + duracion + '</strong>' + ' approximately.';
 
               }
               else {
                text = "You cannot drive from " + '<strong>' + answer.origin_addresses + '</strong> to  <strong>' + answer.destination_addresses + '</strong>';
+               text0 = "";
               }
             setTimeout(function(){
               document.getElementById("status").innerHTML = "";
               document.getElementById('distances').innerHTML = text;
-            }, 1000);  
+              document.getElementById('duration').innerHTML = text0;
+
+            }, 1000);
 
 
 
