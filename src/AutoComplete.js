@@ -4,7 +4,6 @@ import './css/banners.css';
 
 var places = []; let travelMode = "driving";
 
-
 export class Cards extends React.Component {
   constructor(props) {
    super(props);
@@ -19,6 +18,8 @@ export class Cards extends React.Component {
 
   handleClick() {
     travelMode = this.props.name;
+    document.getElementById("selectedMode").innerHTML = travelMode;
+
  }
 addBorder(){
   const theCards = document.getElementsByClassName('card');
@@ -65,6 +66,7 @@ export class AutoComplete extends React.Component {
 
   render() {
     return (
+
       <Autocomplete
       placeholder= {this.props.placeholder}
       onPlaceSelected={(place) => {
@@ -158,20 +160,16 @@ export class AutoComplete extends React.Component {
 }
 
 
-    export class HeadTitle extends React.Component {
-      /*constructor(props){
-        super(props);
-        this.state = {selectedTravel : travelMode}
-      }*/
 
+    export class HeadTitle extends React.Component {
 
 
       render(){
         return (
-          <div>
+          <div >
            <h1>2- Select origin and destination</h1>
+           <h3>You selected <span id="selectedMode"> driving</span></h3>
           </div>
         )
       }
     }
-    /*<h3>You selected {this.state.selectedTravel} travel mode</h3>*/
