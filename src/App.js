@@ -4,12 +4,13 @@ import logo from './logo.svg';
 import {Head} from './Head';
 import {AutoComplete} from './AutoComplete';
 import {Cards} from './AutoComplete';
+import {HeadTitle} from './AutoComplete';
 import img0 from './img/car.png'
 import img1 from './img/hiker.png'
 import img2 from './img/bycicle.png'
 import img3 from './img/minibus.png'
 
-import './App.css';
+import './css/App.css';
 
 class App extends Component {
 
@@ -20,7 +21,7 @@ class App extends Component {
       <Head />
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to <em>TravelDistance app</em> test by <a href="http://juandavidarce.co/"target="_blank" >Juan David Arce </a></h1>
+          <h1 className="App-title">Welcome to <em>TravelDistance app</em> test by <a href="http://juandavidarce.co/"target="_blank" rel="noopener noreferrer">Juan David Arce </a></h1>
         </header>
         <p className="App-intro">
           This is a test for <code>MOZIO</code>.
@@ -33,12 +34,12 @@ class App extends Component {
         < Cards  name="transit" img={img3}/>
         </div>
         <div>
-        <h1>2- Select origin and destination</h1>
+        <HeadTitle />
         < AutoComplete placeholder= "Write an origin" / >
         < AutoComplete placeholder= "Write a destination"/ >
-        <h5 id="status"></h5>
+        <div id="status"></div>
         <div id="answer">
-        <h3 id="message-title"></h3>
+        <div id="message-title"></div>
         <div id="distances"></div>
         <div id="duration"></div>
         </div>

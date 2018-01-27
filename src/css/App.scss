@@ -33,26 +33,26 @@ input {
 
 #cards-container {
   display: flex;
-  justify-content: center;
+  justify-content: center ;
 }
 #answer {
   width: 80%;
   margin: auto;
   border: solid;
-  background: black;
+  background: black ;
   color: white;
 }
-
+#status { height: 100px; font-size: 40px;}
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
+  from { transform: rotate(0deg);}
   to { transform: rotate(360deg); }
 }
 @media (max-width : 1000px) {
-    #cards-container  { font-size: x-small;}
+    #cards-container  { font-size: x-small;  }
 
 }
 @media (max-width : 600px) {
-    .App-header { font-size: small;}
+    .App-header { font-size: small; }
     input {width: 80%;}
 }
 

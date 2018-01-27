@@ -9,6 +9,9 @@
     "cors-anywhere": "^0.4.1",
     "google-distance-matrix": "^1.1.1",
     "google-map-react": "^0.29.0",
+    "grunt-autoprefixer": "^3.0.4",
+    "grunt-contrib-watch": "^1.0.0",
+    "node-sass-chokidar": "0.0.3",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-google-autocomplete": "^1.0.15",
@@ -22,10 +25,12 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "startwebpack": "webpack && open index.html"
-
+    "startwebpack": "webpack && open index.html",
+    "build-css": "node-sass-chokidar src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar src/css/ -o src/css/ --watch --recursive"
   },
   "devDependencies": {
-    "gh-pages": "^1.1.0"
+    "gh-pages": "^1.1.0",
+    "grunt": "^1.0.1"
   }
 }
