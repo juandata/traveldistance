@@ -70,7 +70,6 @@ export class AutoComplete extends React.Component {
       <Autocomplete
       placeholder= {this.props.placeholder}
       onPlaceSelected={(place) => {
-
       if(places.length <= 2){
         this.props.placeholder === "Write an origin" ? places[0] = place.place_id :  places[1] = place.place_id
 
@@ -116,24 +115,36 @@ export class AutoComplete extends React.Component {
               method: 'GET',
               url: urlField,
             }, function getResult(result) {
-              console.log(result);
+
               let text = "", text0 = "", textMessage = "";
               var answer = JSON.parse(result);
-              let zeroResults = answer.rows[0].elements[0].status; //TypeError: Cannot read property 'elements' of undefined
-              if(zeroResults === "OK"){
-                let distancia = answer.rows[0].elements[0].distance.text;
-                let duracion = answer.rows[0].elements[0].duration.text;
-                 textMessage = "3- Check the answer : "
-                text = 'The ' + travelMode + ' distance from <strong>' + answer.origin_addresses + '</strong> to <strong>' + answer.destination_addresses + '</strong> is ' +
-                distancia;
-                text0 = 'The duration of your travel will be <strong>' + duracion + '</strong> approximately.';
+              if( answer.status === "INVALID_REQUEST") {
+                  textMessage = " Invalid Request : "
+                   text = "You must choose a city from the <strong>  dropdown menu</strong>";
+                   text0 = "";
+                }
+                else {
+                  let zeroResults = answer.rows[0].elements[0].status; //TypeError: Cannot read property 'elements' of undefined
 
-              }
-              else {
-              textMessage = "3- Imposible travel : "
-               text = "You cannot go by " + travelMode + " from <strong>" + answer.origin_addresses + '</strong> to  <strong>' + answer.destination_addresses + '</strong>';
-               text0 = "";
-              }
+                  if(zeroResults === "OK"){
+                    let distancia = answer.rows[0].elements[0].distance.text;
+                    let duracion = answer.rows[0].elements[0].duration.text;
+                     textMessage = "3- Check the answer : "
+                    text = 'The ' + travelMode + ' distance from <strong>' + answer.origin_addresses + '</strong> to <strong>' + answer.destination_addresses + '</strong> is ' +
+                    distancia;
+                    text0 = 'The duration of your travel will be <strong>' + duracion + '</strong> approximately.';
+
+                  }
+
+                  else {
+                  textMessage = "3- Imposible travel : "
+                   text = "You cannot go by " + travelMode + " from <strong>" + answer.origin_addresses + '</strong> to  <strong>' + answer.destination_addresses + '</strong>';
+                   text0 = "";
+                  }
+                }
+
+
+
             setTimeout(function(){
               document.getElementById("status").innerHTML = "";
               document.getElementById('message-title').innerHTML = textMessage;
