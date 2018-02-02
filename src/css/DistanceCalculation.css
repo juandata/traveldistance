@@ -1,0 +1,16 @@
+.section-article-distance {
+  overflow: auto;
+  overflow-x: hidden; }
+
+@media (max-width: 800px) {
+  #main-distance {
+    flex-direction: column; }
+  .section-article-distance {
+    width: 100%;
+    font-size: xx-small; }
+  #section-distance {
+    height: -webkit-fill-available;
+    height: -moz-available; }
+  #aside-distance {
+    width: 100%;
+    height: 45%; } }

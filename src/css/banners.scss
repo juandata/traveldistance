@@ -22,3 +22,28 @@ img {
 
 #img {width : 33%;}
 #mode, #selectedMode {color: red; }
+#cards-container {
+  display: flex;
+  justify-content: space-around ;
+  text-align: -webkit-center;
+}
+#answer {
+  width: 80%;
+  margin: auto;
+  border: solid;
+  background: black ;
+  color: white;
+}
+#status { height: 50px; font-size: 40px;}
+
+@media (max-width : 1000px) {
+    #cards-container  { font-size: x-small;  }
+
+}
+
+@media (max-width : 800px) {
+     #cards-container { flex-direction: column;
+    }
+    #answer {font-size: large;}
+    #status { height: 20px;}
+  }

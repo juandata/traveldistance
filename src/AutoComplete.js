@@ -24,7 +24,7 @@ export class Cards extends React.Component {
 addBorder(){
   const theCards = document.getElementsByClassName('card');
   const theBorder = this.state.border === "none" ? "solid" : "none";
-  document.getElementById('status').scrollIntoView({behavior: "smooth"});
+  document.getElementById('head-title').scrollIntoView({behavior: "smooth"});
 
 
 
@@ -76,6 +76,7 @@ export class AutoComplete extends React.Component {
         }
 
       if(places.length === 2) {
+        document.getElementById('status').scrollIntoView({behavior: "smooth"});
         document.getElementById("status").innerHTML = "Fletching Distance...";
         document.getElementById("message-title").innerHTML = "";
         document.getElementById("distances").innerHTML = "";
@@ -119,9 +120,15 @@ export class AutoComplete extends React.Component {
               let text = "", text0 = "", textMessage = "";
               var answer = JSON.parse(result);
               if( answer.status === "INVALID_REQUEST") {
-                  textMessage = " Invalid Request : "
+                  textMessage = " <h3>Invalid Request : </h3>"
                    text = "You must choose a city from the <strong>  dropdown menu</strong>";
                    text0 = "";
+                }
+                else if(answer.status === "MAX_ELEMENTS_EXCEEDED" || answer.status === "OVER_QUERY_LIMIT" ||
+              answer.status === "REQUEST_DENIED" || answer.status === "UNKNOWN_ERROR"   ){
+                textMessage = " <h3>IThere was a problem with your request: </h3>"
+                 text = "Try again later or contact <strong> server administartor</strong>";
+                 text0 = "";
                 }
                 else {
                   let zeroResults = answer.rows[0].elements[0].status; //TypeError: Cannot read property 'elements' of undefined
@@ -129,7 +136,7 @@ export class AutoComplete extends React.Component {
                   if(zeroResults === "OK"){
                     let distancia = answer.rows[0].elements[0].distance.text;
                     let duracion = answer.rows[0].elements[0].duration.text;
-                     textMessage = "3- Check the answer : "
+                     textMessage = "<h3>3 -Check the answer : </h3>"
                     text = 'The ' + travelMode + ' distance from <strong>' + answer.origin_addresses + '</strong> to <strong>' + answer.destination_addresses + '</strong> is ' +
                     distancia;
                     text0 = 'The duration of your travel will be <strong>' + duracion + '</strong> approximately.';
@@ -137,7 +144,7 @@ export class AutoComplete extends React.Component {
                   }
 
                   else {
-                  textMessage = "3- Imposible travel : "
+                  textMessage = "<h3>3- Imposible travel : </h3>"
                    text = "You cannot go by " + travelMode + " from <strong>" + answer.origin_addresses + '</strong> to  <strong>' + answer.destination_addresses + '</strong>';
                    text0 = "";
                   }
@@ -154,7 +161,7 @@ export class AutoComplete extends React.Component {
 
 
 
-            }, 1000);
+            }, 2000);
 
 
 
@@ -177,7 +184,7 @@ export class AutoComplete extends React.Component {
 
       render(){
         return (
-          <div >
+          <div id="head-title" >
            <h1>2- Select origin and destination</h1>
            <h3>You selected <span id="selectedMode"> driving</span></h3>
           </div>

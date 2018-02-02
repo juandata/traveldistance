@@ -2,48 +2,77 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import {Head} from './Head';
-import {AutoComplete} from './AutoComplete';
-import {Cards} from './AutoComplete';
-import {HeadTitle} from './AutoComplete';
-import img0 from './img/car.png'
-import img1 from './img/hiker.png'
-import img2 from './img/bycicle.png'
-import img3 from './img/minibus.png'
+import {Main} from './main';
+import {Nav} from './nav';
+
+import {DistanceCalculation} from './distanceCalculation';
+
+//import {Dashboard} from './dashboard';
+//import {Traveldistance} from './traveldistance';
 
 import './css/App.css';
+let display = null;
 
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = { name: '' };
+     this.changeName = this.changeName.bind(this);
+  }
+  changeName(newName) {
+   this.setState({
+     name: newName
+   });
+ }
+
+componentWillMount(){
+  switch (window.location.href) {
+    case 'http://localhost:3000/#Home':  display = <Main />; break;
+    case 'http://localhost:3000/#Distance Calculator' : display = <DistanceCalculation />; break;
+    case 'http://localhost:3000/#Distance%20Calculator' : display = <DistanceCalculation />; break;/*Mozilla*/
+
+    default :   display = <Main />;
+  }
+}
+/*
+componentDidUpdate(){
+ setTimeout(function(){
+    var map;
+   map = new google.maps.Map(document.getElementById('map'), {
+     center: {lat:40.7413549, lng: -73.9980244},
+     zoom: 13
+   });
+ },5000);
+}
+*/
+
+
+
 
   render() {
+
+     switch (this.state.name){
+       case 'Home': display = <Main />; break;
+       case 'Distance Calculator':  display = <DistanceCalculation />; break;
+
+     }
+
     return (
       <div className="App">
       <Head />
+        <div id="body" >
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to <em>TravelDistance app</em> test by <a href="http://juandavidarce.co/"target="_blank" rel="noopener noreferrer">Juan David Arce </a></h1>
         </header>
-        <p className="App-intro">
-          This is a test for <code>MOZIO</code>.
-        </p>
-        <h1>1- Select a travel mode</h1>
-        <div id="cards-container">
-        < Cards  name="driving" img={img0} />
-        < Cards  name="walking" img={img1}  />
-        < Cards  name="bicycling" img={img2}/>
-        < Cards  name="transit" img={img3}/>
-        </div>
-        <div>
-        <HeadTitle />
-        < AutoComplete placeholder= "Write an origin" / >
-        < AutoComplete placeholder= "Write a destination"/ >
-        <div id="status"></div>
-        <div id="answer">
-        <div id="message-title"></div>
-        <div id="distances"></div>
-        <div id="duration"></div>
+        <div className="stage">
+        <nav><ul><Nav name={this.state.name}onChange={this.changeName} /></ul></nav>
+        {display}
+        <footer></footer>
         </div>
         </div>
+        <footer></footer>
 
 
       </div>
@@ -55,7 +84,10 @@ export default App;
 
 
 
-/*AIzaSyDn8ctUY9eDqqGCpEFt_vI858za3n2RsXk
+/*
+
+<Traveldistance />
+AIzaSyDn8ctUY9eDqqGCpEFt_vI858za3n2RsXk
 http://maps.googleapis.com/maps/api/distancematrix/outputFormat?parameters
 https://maps.googleapis.com/maps/api/distancematrix/json?origins=place_id:ChIJ2_UmUkxNekgRqmv-BDgUvtk&destinations=place_id:ChIJdd4hrwug2EcRmSrV3Vo6llI&language=en&key=AIzaSyDn8ctUY9eDqqGCpEFt_vI858za3n2RsXk
 https://maps.googleapis.com/maps/api/distancematrix/json?origins=Manizales+CO&destinations=Medellin+CO&language=en&key=AIzaSyDn8ctUY9eDqqGCpEFt_vI858za3n2RsXk

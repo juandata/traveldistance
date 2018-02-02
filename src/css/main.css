@@ -1,0 +1,28 @@
+main {
+  display: flex;
+width: -webkit-fill-available;
+  width: -moz-available;
+  overflow: hidden; }
+
+section, article, aside {
+  border: solid 3px blue; }
+
+.section-article {
+  width: 75%;
+  height: 100%; }
+
+aside {
+  width: 25%;
+  height: 100%; }
+
+section {
+  width: 100%;
+  height: 70%; }
+
+article {
+  width: 100%;
+  height: 30%; }
+
+#map {
+  width: 100%;
+  height: 100%; }
