@@ -1,11 +1,13 @@
-
+/*eslint eqeqeq:0*/
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import {Head} from './Head';
 import {Main} from './main';
+import {AboutMe} from './main';
 import {Nav} from './nav';
 
 import {DistanceCalculation} from './distanceCalculation';
+import {Mapa} from './map';
 
 //import {Dashboard} from './dashboard';
 //import {Traveldistance} from './traveldistance';
@@ -31,6 +33,8 @@ componentWillMount(){
     case 'http://localhost:3000/#Home':  display = <Main />; break;
     case 'http://localhost:3000/#Distance Calculator' : display = <DistanceCalculation />; break;
     case 'http://localhost:3000/#Distance%20Calculator' : display = <DistanceCalculation />; break;/*Mozilla*/
+    case 'http://localhost:3000/#Map' : display = <Mapa />; break;/*Mozilla*/
+
 
     default :   display = <Main />;
   }
@@ -55,6 +59,10 @@ componentDidUpdate(){
      switch (this.state.name){
        case 'Home': display = <Main />; break;
        case 'Distance Calculator':  display = <DistanceCalculation />; break;
+       case 'Map':  display = <Mapa />; break;
+       case 'About me':  display = <AboutMe />; break;
+
+
 
      }
 

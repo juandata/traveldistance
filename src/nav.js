@@ -2,7 +2,7 @@ import React from 'react';
 import './css/nav.css'
 
 
-const menuPages =  ['Home', 'Distance Calculator' , 'Pics' , 'Bio', 'Art', 'Code Samples', 'About', 'Contact'];
+const menuPages =  ['Home', 'Distance Calculator' , 'Map' , 'About me'];
 var menu = [];
 
  export class Nav extends React.Component{

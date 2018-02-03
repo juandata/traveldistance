@@ -14,3 +14,15 @@ export class Main extends React.Component {
     )
   }
 }
+
+export class AboutMe extends React.Component {
+  render() {
+    return (
+      <main>
+      <div className="section-article" style={{height : '100%', width: '100%'}}>
+      <section style={{height : '100%'}}>Section About Me</section>
+      </div>
+      </main>
+    )
+  }
+}
