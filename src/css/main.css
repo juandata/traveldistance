@@ -1,5 +1,3 @@
-/*eslint-disable-next-line*/
-
 main {
   display: flex;
   width: -webkit-fill-available;
@@ -7,7 +5,7 @@ main {
   overflow: hidden; }
 
 section, article, aside {
-  border: solid 3px blue; }
+  border: solid 3px black; }
 
 .section-article {
   width: 75%;

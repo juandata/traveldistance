@@ -1,9 +1,12 @@
+nav { background-color:  #222;}
+
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    background-color: #f1f1f1;
-    border: solid;
+    font : {
+      size: 20px; weight : bold;
+    }
 
     li {
       a {
@@ -14,7 +17,7 @@ ul {
       }
 
       a:hover {
-        background-color: #555;
+        background-color: #555!important;
         color: white;
        }
     }

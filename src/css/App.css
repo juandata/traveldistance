@@ -1,3 +1,18 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  font-size: 14px; }
+  body footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #222;
+    color: white; }
+  body a {
+    color: #4993a7;
+    text-decoration: none; }
+
 html, body, #root, .App {
   height: 100%;
   overflow-y: hidden; }
@@ -16,7 +31,7 @@ footer {
   height: 40%; }
 
 .App-header {
-  background-color: #222;
+  background-color: gray;
   height: 20%;
   color: white; }
 
@@ -28,8 +43,7 @@ footer {
 
 .stage {
   height: 80%;
-  display: flex;
-  border: solid; }
+  display: flex; }
 
 input {
   width: 400px;
@@ -39,13 +53,25 @@ input {
   border: 1px solid #bab2b2;
   box-shadow: 0px 0px 12px #EFEFEF; }
 
+.icon {
+  font-size: -webkit-xxx-large;
+  position: absolute;
+  display: none; }
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg); }
   to {
-    transform: rotate(360deg); }
-  @media (max-width: 640px) {
-    .App-header {
-      font-size: xx-small; }
-    input {
-      width: 80%; } } }
+    transform: rotate(360deg); } }
+
+@media (max-width: 640px) {
+  .App-header {
+    font-size: xx-small; }
+  input {
+    width: 80%; }
+  .icon {
+    display: block; }
+  .topnav {
+    display: none; }
+  .responsive {
+    display: block; } }

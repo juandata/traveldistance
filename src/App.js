@@ -51,6 +51,20 @@ componentDidUpdate(){
 }
 */
 
+responsiveMenu(){
+  console.log("holanav");
+  var x = document.getElementById("ul");  let icono = document.getElementById('icon');
+   if (x.className === "topnav") {
+       x.className += " responsive";
+       icono.style.position = 'inherit';
+
+   } else {
+       x.className = "topnav";
+
+       icono.style.position = 'absolute';
+   }
+ }
+
 
 
 
@@ -75,12 +89,17 @@ componentDidUpdate(){
           <h1 className="App-title">Welcome to <em>TravelDistance app</em> test by <a href="http://juandavidarce.co/"target="_blank" rel="noopener noreferrer">Juan David Arce </a></h1>
         </header>
         <div className="stage">
-        <nav><ul><Nav name={this.state.name}onChange={this.changeName} /></ul></nav>
+        <nav><ul id="ul" className='topnav'><Nav name={this.state.name}onChange={this.changeName} /></ul>
+         <div><a href="javascript:void(0);" className="icon" id="icon" onClick={this.responsiveMenu}>&#9776;</a></div>
+         </nav>
         {display}
+
         <footer></footer>
         </div>
         </div>
-        <footer></footer>
+        <footer>
+        This is the footer content
+        </footer>
 
 
       </div>

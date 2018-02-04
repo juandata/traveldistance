@@ -12,6 +12,14 @@ var menu = [];
       }
   handleClick(e){
     this.props.onChange( e.target.id);
+    let list = document.getElementsByClassName('a');
+    for (var item=0; item < list.length; item ++){
+      list[item].style.backgroundColor = '#222';
+    }
+
+    document.getElementById(e.target.id).style.backgroundColor = '#555';
+
+
     /*setTimeout(function(){
       console.log(window.location.href)
     },1000);*/
@@ -20,8 +28,8 @@ var menu = [];
 render() {
    menu = menuPages.map(page => {
          return (
-           <li>
-             <a  href= {"#" + page} id={page} onClick={this.handleClick}  >
+           <li >
+             <a className="a" href= {"#" + page} id={page} onClick={this.handleClick}  >
              {page}
              </a>
            </li>
