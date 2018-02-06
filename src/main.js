@@ -6,7 +6,7 @@ export class Main extends React.Component {
     return (
       <main>
       <div className="section-article">
-      <section>Section</section>
+      <section>Main Section</section>
       <article>Article</article>
       </div>
       <aside>Aside</aside>

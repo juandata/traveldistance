@@ -22,6 +22,7 @@ class App extends Component {
     this.state = { name: '' };
      this.changeName = this.changeName.bind(this);
   }
+  //updates this state with onChange value inherited from nav.js
   changeName(newName) {
    this.setState({
      name: newName
@@ -29,11 +30,15 @@ class App extends Component {
  }
 
 componentWillMount(){
+  //update current view with url link
   switch (window.location.href) {
     case 'http://localhost:3000/#Home':  display = <Main />; break;
     case 'http://localhost:3000/#Distance Calculator' : display = <DistanceCalculation />; break;
     case 'http://localhost:3000/#Distance%20Calculator' : display = <DistanceCalculation />; break;/*Mozilla*/
     case 'http://localhost:3000/#Map' : display = <Mapa />; break;/*Mozilla*/
+    case 'http://localhost:3000/#About me' : display = <AboutMe />; break;
+    case 'http://localhost:3000/#About%20me' : display = <AboutMe />; break;/*Mozilla*/
+
 
 
     default :   display = <Main />;
@@ -69,7 +74,7 @@ responsiveMenu(){
 
 
   render() {
-
+      //rerender view when component state changes
      switch (this.state.name){
        case 'Home': display = <Main />; break;
        case 'Distance Calculator':  display = <DistanceCalculation />; break;
