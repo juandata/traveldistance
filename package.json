@@ -3,6 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "https://juandata.github.io/traveldistance/",
+  "author": {
+    "name": "Juan David Tabares Arce",
+    "email": "info@juandavidarce.co",
+    "url": "juandavidarce.co"
+  },
   "dependencies": {
     "@google/maps": "^0.4.5",
     "axios": "^0.17.1",
@@ -11,6 +16,7 @@
     "google-map-react": "^0.29.0",
     "grunt-autoprefixer": "^3.0.4",
     "grunt-contrib-watch": "^1.0.0",
+    "jquery": "^3.3.1",
     "node-sass-chokidar": "0.0.3",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -21,7 +27,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "jest",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
@@ -30,7 +36,10 @@
     "watch-css": "npm run build-css && node-sass-chokidar src/css/ -o src/css/ --watch --recursive"
   },
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-jest": "^22.2.2",
     "gh-pages": "^1.1.0",
-    "grunt": "^1.0.1"
+    "grunt": "^1.0.1",
+    "regenerator-runtime": "^0.11.1"
   }
 }

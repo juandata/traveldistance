@@ -9,9 +9,6 @@ import {Nav} from './nav';
 import {DistanceCalculation} from './distanceCalculation';
 import {Mapa} from './map';
 
-//import {Dashboard} from './dashboard';
-//import {Traveldistance} from './traveldistance';
-
 import './css/App.css';
 let display = null;
 
@@ -30,7 +27,7 @@ class App extends Component {
  }
 
 componentWillMount(){
-  //update current view with url link
+  //update current view with url link (deep linking)
   switch (window.location.href) {
     case 'http://localhost:3000/#Home':  display = <Main />; break;
     case 'http://localhost:3000/#Distance Calculator' : display = <DistanceCalculation />; break;
@@ -38,36 +35,22 @@ componentWillMount(){
     case 'http://localhost:3000/#Map' : display = <Mapa />; break;/*Mozilla*/
     case 'http://localhost:3000/#About me' : display = <AboutMe />; break;
     case 'http://localhost:3000/#About%20me' : display = <AboutMe />; break;/*Mozilla*/
-
-
-
     default :   display = <Main />;
   }
 }
-/*
-componentDidUpdate(){
- setTimeout(function(){
-    var map;
-   map = new google.maps.Map(document.getElementById('map'), {
-     center: {lat:40.7413549, lng: -73.9980244},
-     zoom: 13
-   });
- },5000);
-}
-*/
 
-responsiveMenu(){
-  console.log("holanav");
-  var x = document.getElementById("ul");  let icono = document.getElementById('icon');
+//56 949 322 673
+responsiveMenu(e){
+   var x = document.getElementById("ul");  let icono = document.getElementById('icon');
    if (x.className === "topnav") {
        x.className += " responsive";
        icono.style.position = 'inherit';
 
    } else {
        x.className = "topnav";
-
        icono.style.position = 'absolute';
    }
+   e.preventDefault();
  }
 
 
@@ -95,7 +78,7 @@ responsiveMenu(){
         </header>
         <div className="stage">
         <nav><ul id="ul" className='topnav'><Nav name={this.state.name}onChange={this.changeName} /></ul>
-         <div><a href="javascript:void(0);" className="icon" id="icon" onClick={this.responsiveMenu}>&#9776;</a></div>
+         <div><a href="#" className="icon" id="icon" onClick={this.responsiveMenu}>&#9776;</a></div>
          </nav>
         {display}
 
